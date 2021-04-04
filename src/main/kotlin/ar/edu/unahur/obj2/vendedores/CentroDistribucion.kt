@@ -11,7 +11,7 @@ class CentroDistribucion(val ciudad: Ciudad) {
     }
 
     fun vendedorEstrella() = vendedores.maxBy { v -> v.puntajeCertificaciones() }
-    fun puedeCubrir(ciudad: Ciudad) = vendedores.count { v -> v.puedeTrabajarEn(ciudad) } >= 1
-    fun vendedoresGenericos() = vendedores.filter { v -> v.otrasCertificaciones() >= 1 }.toSet()
+    fun puedeCubrir(ciudad: Ciudad) = vendedores.any { v -> v.puedeTrabajarEn(ciudad) }
+    fun vendedoresGenericos() = vendedores.filter { v -> v.otrasCertificaciones() >= 1 }.toSet() //agregué el toSet() porque el enunciado dice "la colección", pero no es necesario
     fun esRobusto() = vendedores.count { v -> v.esFirme() } >= 3
 }
