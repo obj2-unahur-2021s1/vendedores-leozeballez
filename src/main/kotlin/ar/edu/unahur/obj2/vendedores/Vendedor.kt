@@ -45,8 +45,8 @@ class Viajante(val provinciasHabilitadas: List<Provincia>) : Vendedor() {
   override fun puedeTrabajarEn(ciudad: Ciudad): Boolean {
     return provinciasHabilitadas.contains(ciudad.provincia)
   }
-
-  override fun esInfluyente() = provinciasHabilitadas.sumBy { p -> p.poblacion } > 10000000
+  fun totalPoblacion() = provinciasHabilitadas.sumBy { p -> p.poblacion }
+  override fun esInfluyente() = totalPoblacion() > 10000000
 
 }
 
@@ -55,5 +55,7 @@ class ComercioCorresponsal(val ciudades: List<Ciudad>) : Vendedor() {
     return ciudades.contains(ciudad)
   }
 
-  override fun esInfluyente() = ciudades.size >= 5 || ciudades.map { c -> c.provincia }.toSet().size >= 3
+  fun provinciasDeCiudades() = ciudades.map { c -> c.provincia }.toSet()
+  fun cantidadCiudades() = ciudades.size
+  override fun esInfluyente() = cantidadCiudades() >= 5 || provinciasDeCiudades().size >= 3
 }
