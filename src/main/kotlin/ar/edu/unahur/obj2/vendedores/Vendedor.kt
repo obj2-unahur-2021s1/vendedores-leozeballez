@@ -14,8 +14,8 @@ abstract class Vendedor {
   // En las funciones declaradas con = no es necesario explicitar el tipo
   fun esVersatil() =
     certificaciones.size >= 3
-      && this.certificacionesDeProducto() >= 1
-      && this.otrasCertificaciones() >= 1
+            && this.certificacionesDeProducto() >= 1
+            && this.otrasCertificaciones() >= 1
 
   // Si el tipo no está declarado y la función no devuelve nada, se asume Unit (es decir, vacío)
   fun agregarCertificacion(certificacion: Certificacion) {
@@ -29,6 +29,7 @@ abstract class Vendedor {
 
   fun puntajeCertificaciones() = certificaciones.sumBy { c -> c.puntaje }
   abstract fun esInfluyente(): Boolean
+  fun esGenerico() = otrasCertificaciones() >= 1
 }
 
 // En los parámetros, es obligatorio poner el tipo

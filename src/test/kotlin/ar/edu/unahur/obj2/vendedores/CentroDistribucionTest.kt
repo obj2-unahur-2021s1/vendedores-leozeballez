@@ -4,6 +4,7 @@ import io.kotest.assertions.throwables.shouldThrowAny
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.booleans.shouldBeFalse
 import io.kotest.matchers.booleans.shouldBeTrue
+import io.kotest.matchers.collections.shouldContain
 import io.kotest.matchers.shouldBe
 
 class CentroDistribucionTest : DescribeSpec({
@@ -41,13 +42,13 @@ class CentroDistribucionTest : DescribeSpec({
             centroMoron.puedeCubrir(laPlata).shouldBeTrue()
         }
         it("nadie puede trabajar en rosario") {
-            centroMoron.puedeCubrir(rosario)
+            centroMoron.puedeCubrir(rosario).shouldBeFalse()
         }
     }
 
     describe("vendedoresGenericos") {
         it("solo el vendedorViajante es generico") {
-            centroMoron.vendedoresGenericos().contains(viajante)
+            centroMoron.vendedoresGenericos().shouldContain(viajante)
             centroMoron.vendedoresGenericos().size.shouldBe(1)
         }
     }
