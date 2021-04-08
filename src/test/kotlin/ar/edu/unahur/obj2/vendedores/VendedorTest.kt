@@ -64,9 +64,9 @@ class VendedorTest : DescribeSpec({
     }
 
     describe("Viajante2") {
-      val viajante = Viajante(listOf(buenosAires))
+      val viajante2 = Viajante(listOf(buenosAires))
       it("esInfluyente") {
-        viajante.esInfluyente().shouldBeTrue()
+        viajante2.esInfluyente().shouldBeTrue()
       }
     }
 
